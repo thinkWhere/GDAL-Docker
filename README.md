@@ -1,6 +1,13 @@
 # GDAL-Docker
 
-A GDAL container for Python 3.5 users.
+A GDAL docker container for Python 3 users.  [See the Docker Hub Page](https://hub.docker.com/r/thinkwhere/gdal-python/)
 
-Built on the Python:3.5 container, with libgdal-dev installed
-Python bindings can be installed with: pip install GDAL>=2.0.3
+Installs and compiles the latest version of GDAL so that it can be easily added to your app via requirements.txt.
+
+Just add the following line to requirements.txt:
+
+```python
+GDAL>=2.2.4
+```
+
+Also installs nodejs and npm to allow you to easily install any javascript dependencies. 
