@@ -9,5 +9,3 @@ Just add the following line to requirements.txt:
 ```python
 GDAL>=2.2.4
 ```
-
-Also installs nodejs and npm to allow you to easily install any javascript dependencies. 
