@@ -1,3 +1,4 @@
+# Docker container that installs Python 3.6, GDAL and necessary shippable dependencies for CI
 FROM python:3.6-stretch
 
 # Update base container install
