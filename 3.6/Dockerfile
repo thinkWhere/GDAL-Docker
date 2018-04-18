@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.6-stretch
 
 # Update base container install
 RUN apt-get update
@@ -17,9 +17,6 @@ RUN apt-get -t unstable install -y libgdal-dev g++
 # Update C env vars so compiler can find gdal
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
-
-# Install NodeJS, for any JS work
-RUN apt-get -t unstable install -y nodejs npm
 
 # This will install latest version of GDAL
 RUN pip install GDAL>=2.2.4
