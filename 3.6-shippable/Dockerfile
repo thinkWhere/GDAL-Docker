@@ -41,3 +41,6 @@ RUN apt-get -y install google-chrome-stable
 # Setup default locale
 RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen
 RUN locale-gen en_US.UTF-8
+
+# Install awsebcli for deploying to AWS Elastic Beanstalk
+RUN pip install awsebcli
