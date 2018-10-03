@@ -9,3 +9,11 @@ Just add the following line to requirements.txt:
 ```python
 GDAL>=2.2.4
 ```
+
+## Running locally
+
+Run interactively:
+
+```bash
+ docker run -it thinkwhere/gdal-python:3.6-shippable bash
+```
