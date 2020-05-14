@@ -6,11 +6,11 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Add unstable repo to allow us to access latest GDAL builds
-RUN echo deb http://ftp.uk.debian.org/debian unstable main contrib non-free >> /etc/apt/sources.list
+RUN echo deb http://ftp.uk.debian.org/debian stable main contrib non-free >> /etc/apt/sources.list
 RUN apt-get update
 
 ## Install PostGIS
-RUN apt-get -t unstable install -y postgresql-11-postgis-2.5
+RUN apt-get install -y postgresql-11-postgis-2.5
 #
 ## Update privs to allow Postgres to run locally
 RUN sed -i "s/local   all             postgres                                peer/local   all             postgres                                trust/" /etc/postgresql/11/main/pg_hba.conf
@@ -19,7 +19,7 @@ RUN sed -i "s/local   all             postgres                                pe
 RUN apt-get remove -y binutils
 #
 ## Install GDAL dependencies
-RUN apt-get -t unstable install -y libgdal-dev g++
+RUN apt-get install -y libgdal-dev g++
 #
 ## Update C env vars so compiler can find gdal
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
@@ -29,7 +29,7 @@ ENV C_INCLUDE_PATH=/usr/include/gdal
 RUN pip install GDAL==2.4.2
 #
 ## Install NodeJS, for any JS work
-RUN apt-get -t unstable install -y nodejs npm
+RUN apt-get install -y nodejs npm
 RUN npm i -g npm node-gyp
 #
 ## Install Google Chrome for JS testing
