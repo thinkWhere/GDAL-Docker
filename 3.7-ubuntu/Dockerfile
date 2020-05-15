@@ -1,5 +1,5 @@
 #### Use latest Ubuntu
-FROM ubuntu:disco
+FROM ubuntu:eoan
 
 # Update base container install
 RUN apt-get update
