@@ -13,7 +13,8 @@ RUN apt-get update \
 # Install PostGIS
 RUN echo deb http://ftp.uk.debian.org/debian stable main contrib non-free >> /etc/apt/sources.list \
 && apt-get update \
-&& apt-get install -y --no-install-recommends postgresql-11-postgis-2.5
+&& apt-get install -y postgresql-11-postgis-2.5 \
+&& rm -rf /var/lib/apt/lists/*
 
 # Update privs to allow Postgres to run locally
 RUN sed -i "s/local   all             postgres                                peer/local   all             postgres                                trust/" /etc/postgresql/11/main/pg_hba.conf
@@ -22,7 +23,7 @@ RUN sed -i "s/local   all             postgres                                pe
 RUN apt-get remove -y binutils
 
 # Install GDAL dependencies
-RUN apt-get install -y libgdal-dev g++
+RUN apt-get update && apt-get install -y libgdal-dev g++
 
 # Update C env vars so compiler can find gdal
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal

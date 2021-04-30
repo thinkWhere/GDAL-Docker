@@ -1,15 +1,13 @@
 #### Use latest Ubuntu LTS release as the base
 FROM ubuntu:bionic
 
-# Update base container install
-RUN apt-get update
-RUN apt-get upgrade -y
+# Update base container install with GDAL dependencies
+RUN apt-get update \
+&& apt-get upgrade -y \
+&& apt-get install -y --no-install-recommends python3-pip libgdal-dev locales \
+&& locale-gen en_US.UTF-8 \
+&& rm -rf /var/lib/apt/lists/*
 
-# Install GDAL dependencies
-RUN apt-get install -y python3-pip libgdal-dev locales
-
-# Ensure locales configured correctly
-RUN locale-gen en_US.UTF-8
 ENV LC_ALL='en_US.utf8'
 
 # Set python aliases for python3
@@ -21,4 +19,5 @@ ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
 # This will install latest version of GDAL
-RUN pip3 install GDAL==2.2.3
+RUN pip3 install --upgrade setuptools
+RUN pip3 install GDAL==2.2.4
